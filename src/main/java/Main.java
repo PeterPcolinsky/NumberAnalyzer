@@ -1,7 +1,26 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Simple console application for analyzing integer numbers.
+ *
+ * <p>The program allows the user to enter integers separated by spaces
+ * and displays basic statistics such as sum, average, minimum, maximum
+ * and sorted numbers.</p>
+ *
+ * <p>The user can also search for specific numbers in the entered input
+ * and repeat the analysis with a new set of numbers.</p>
+ */
 public class Main {
+
+    /**
+     * Entry point of the application.
+     *
+     * <p>Handles user input, calls {@link NumberAnalyzer} methods
+     * and prints the analysis results to the console.</p>
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         NumberAnalyzer na = new NumberAnalyzer();
