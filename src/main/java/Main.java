@@ -30,11 +30,7 @@ public class Main {
             System.out.print("Enter integers separated by spaces: ");
             String input = scanner.nextLine().trim();
 
-            String[] parts = input.split("\\s+");
-            int[] numbers = new int[parts.length];
-            for (int i = 0; i < parts.length; i++) {
-                numbers[i] = Integer.parseInt(parts[i]);
-            }
+            int[] numbers = parseNumbers(input);
 
             int sum = na.sum(numbers);
             double average = na.average(numbers);
@@ -77,5 +73,22 @@ public class Main {
                 }
             }
         }
+    }
+
+    /**
+     * Parses a string of space-separated integers into an array.
+     *
+     * @param input user input string
+     * @return array of integers
+     */
+    private static int[] parseNumbers(String input) {
+        String[] parts = input.split("\\s+");
+        int[] numbers = new int[parts.length];
+
+        for (int i = 0; i < parts.length; i++) {
+            numbers[i] = Integer.parseInt(parts[i]);
+        }
+
+        return numbers;
     }
 }
