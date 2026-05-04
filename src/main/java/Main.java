@@ -86,7 +86,12 @@ public class Main {
         int[] numbers = new int[parts.length];
 
         for (int i = 0; i < parts.length; i++) {
-            numbers[i] = Integer.parseInt(parts[i]);
+            try {
+                numbers[i] = Integer.parseInt(parts[i]);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number: " + parts[i] + ". Using 0 instead.");
+                numbers[i] = 0;
+            }
         }
 
         return numbers;
