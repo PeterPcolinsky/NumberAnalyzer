@@ -44,26 +44,12 @@ public class Main {
             System.out.println("Maximum: " + max);
             System.out.println("Sorted: " + Arrays.toString(sorted));
 
-            while (true) {
-                System.out.print("Enter a number to search for (0 = exit): ");
-                if (scanner.hasNextInt()) {
-                    int search = scanner.nextInt();
-                    scanner.nextLine(); // consume EOL
-                    if (search == 0) break;
-
-                    boolean found = na.contains(numbers, search);
-                    System.out.println(found
-                            ? "The number is in the input ✅."
-                            : "The number is not in the input ❌.");
-                } else {
-                    scanner.nextLine();
-                    System.out.println("Please enter a valid integer.");
-                }
-            }
+            handleSearch(scanner, na, numbers);
 
             while (true) {
                 System.out.print("Do you want to enter new numbers? (yes/no): ");
                 String answer = scanner.nextLine().trim().toLowerCase();
+
                 if (answer.equals("yes") || answer.equals("y")) break;
                 else if (answer.equals("no") || answer.equals("n")) {
                     System.out.println("Analysis completed.");
@@ -95,5 +81,34 @@ public class Main {
         }
 
         return numbers;
+    }
+
+    /**
+     * Handles searching numbers in the input array.
+     *
+     * @param scanner scanner for user input
+     * @param analyzer number analyzer instance
+     * @param numbers array of numbers
+     */
+    private static void handleSearch(Scanner scanner, NumberAnalyzer analyzer, int[] numbers) {
+        while (true) {
+            System.out.print("Enter a number to search for (0 = exit): ");
+
+            if (scanner.hasNextInt()) {
+                int search = scanner.nextInt();
+                scanner.nextLine(); // consume EOL
+
+                if (search == 0) break;
+
+                boolean found = analyzer.contains(numbers, search);
+
+                System.out.println(found
+                        ? "The number is in the input ✅."
+                        : "The number is not in the input ❌.");
+            } else {
+                scanner.nextLine();
+                System.out.println("Please enter a valid integer.");
+            }
+        }
     }
 }
