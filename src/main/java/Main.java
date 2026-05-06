@@ -46,17 +46,9 @@ public class Main {
 
             handleSearch(scanner, na, numbers);
 
-            while (true) {
-                System.out.print("Do you want to enter new numbers? (yes/no): ");
-                String answer = scanner.nextLine().trim().toLowerCase();
-
-                if (answer.equals("yes") || answer.equals("y")) break;
-                else if (answer.equals("no") || answer.equals("n")) {
-                    System.out.println("Analysis completed.");
-                    return;
-                } else {
-                    System.out.println("Please enter only 'yes' or 'no'.");
-                }
+            if (!askToContinue(scanner)) {
+                System.out.println("Analysis completed.");
+                return;
             }
         }
     }
@@ -98,7 +90,9 @@ public class Main {
                 int search = scanner.nextInt();
                 scanner.nextLine(); // consume EOL
 
-                if (search == 0) break;
+                if (search == 0) {
+                    break;
+                }
 
                 boolean found = analyzer.contains(numbers, search);
 
@@ -108,6 +102,28 @@ public class Main {
             } else {
                 scanner.nextLine();
                 System.out.println("Please enter a valid integer.");
+            }
+        }
+    }
+
+    /**
+     * Asks the user whether to continue with another analysis.
+     *
+     * @param scanner scanner for user input
+     * @return true if user wants to continue, false otherwise
+     */
+    private static boolean askToContinue(Scanner scanner) {
+        while (true) {
+            System.out.print("Do you want to enter new numbers? (yes/no): ");
+
+            String answer = scanner.nextLine().trim().toLowerCase();
+
+            if (answer.equals("yes") || answer.equals("y")) {
+                return true;
+            } else if (answer.equals("no") || answer.equals("n")) {
+                return false;
+            } else {
+                System.out.println("Please enter only 'yes' or 'no'.");
             }
         }
     }
