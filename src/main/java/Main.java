@@ -38,11 +38,7 @@ public class Main {
             int max = na.max(numbers);
             int[] sorted = na.sortAscending(numbers);
 
-            System.out.println("Sum: " + sum);
-            System.out.printf("Average: %.2f%n", average);
-            System.out.println("Minimum: " + min);
-            System.out.println("Maximum: " + max);
-            System.out.println("Sorted: " + Arrays.toString(sorted));
+            printResults(sum, average, min, max, sorted);
 
             handleSearch(scanner, na, numbers);
 
@@ -73,6 +69,23 @@ public class Main {
         }
 
         return numbers;
+    }
+
+    /**
+     * Prints calculated analysis results.
+     *
+     * @param sum total sum of numbers
+     * @param average average value
+     * @param min minimum number
+     * @param max maximum number
+     * @param sorted sorted array
+     */
+    private static void printResults(int sum, double average, int min, int max, int[] sorted) {
+        System.out.println("Sum: " + sum);
+        System.out.printf("Average: %.2f%n", average);
+        System.out.println("Minimum: " + min);
+        System.out.println("Maximum: " + max);
+        System.out.println("Sorted: " + Arrays.toString(sorted));
     }
 
     /**
