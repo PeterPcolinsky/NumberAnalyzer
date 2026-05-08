@@ -26,7 +26,8 @@ public class Main {
         NumberAnalyzer na = new NumberAnalyzer();
 
         while (true) {
-            System.out.println("=== Number Analyzer ===");
+            printHeader();
+
             System.out.print("Enter integers separated by spaces: ");
             String input = scanner.nextLine().trim();
 
@@ -47,6 +48,13 @@ public class Main {
                 return;
             }
         }
+    }
+
+    /**
+     * Prints the application header.
+     */
+    private static void printHeader() {
+        System.out.println("=== Number Analyzer ===");
     }
 
     /**
